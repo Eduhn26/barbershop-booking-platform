@@ -1,36 +1,43 @@
-# MagraoBarbershop — Refatoração (Monorepo)
-Stack: **Next.js + Tailwind + TypeScript** (web) | **NestJS + Prisma + PostgreSQL** (api)
+# Barbershop Booking Platform
 
-## Estrutura
-- `apps/api` — NestJS API
-- `apps/web` — Next.js App Router
-- `packages/shared` — tipos/contratos compartilhados
-- `docker/docker-compose.yml` — PostgreSQL local
+A monorepo-based scheduling platform for barbershops.
 
-## Como rodar (dev)
-### 1) Banco
-```bash
-cd docker
-docker compose up -d
-```
+This project started as a SaaS exploration focused on appointment booking, authentication, role-based access, and service management for barbershop operations. It is now positioned as a professional backend/frontend portfolio project and a foundation for future architectural evolution.
 
-### 2) API
-```bash
-cd apps/api
-npm i
-cp .env.example .env
-npm run prisma:generate
-npm run prisma:migrate
-npm run start:dev
-```
+## Current Stack
 
-### 3) Web
-```bash
-cd apps/web
-npm i
-npm run dev
-```
+### Web
+- Next.js 14
+- React 18
+- TypeScript
+- Tailwind CSS
+- Axios
+- React Query
+- Zustand
 
-## Notas
-- Auth inicial: Access Token (Bearer). Evolução planejada: refresh token em cookie httpOnly.
-- Regra de agenda: índice único contra conflito por (salonId, stylistId, date, time).
+### API
+- NestJS
+- Prisma
+- PostgreSQL
+- JWT Authentication
+- Passport JWT
+- class-validator
+- bcryptjs
+
+### Infrastructure
+- Docker Compose
+- npm workspaces
+
+## Repository Structure
+
+```txt
+.
+├── apps
+│   ├── api          # NestJS API
+│   └── web          # Next.js frontend
+├── packages
+│   └── shared       # Shared types/contracts
+├── docker
+│   └── docker-compose.yml
+├── package.json
+└── README.md
